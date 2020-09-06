@@ -4,7 +4,7 @@ permalink: /publications/
 author_profile: true
 ---
 <b> [Adaptive Checkpoint Adjoint Method for Gradient Estimation in Neural ODE](https://proceedings.icml.cc/static/paper_files/icml/2020/917-Paper.pdf)</b><br>
-<b> Juntang Zhuang </b>, Nicha Dvornek, Xiaoxiao Li, Sekhar Tatikonda, Xenophon Papademetris, James S. Duncan. <i>ICML 2020<i> [[slides]](https://icml.cc/media/Slides/icml/2020/virtual(no-parent)-16-13-00UTC-5900-adaptive_checkp.pdf) [[videos]](https://www.youtube.com/playlist?list=PL7KkG3n9bER4ODAMzAKzfXIaF0ndUxK-N)
+<b> Juntang Zhuang </b>, Nicha Dvornek, Xiaoxiao Li, Sekhar Tatikonda, Xenophon Papademetris, James S. Duncan. <i>ICML 2020<i> [[slides]](https://icml.cc/media/Slides/icml/2020/virtual(no-parent)-16-13-00UTC-5900-adaptive_checkp.pdf) [[videos]](https://www.youtube.com/playlist?list=PL7KkG3n9bER4ODAMzAKzfXIaF0ndUxK-N) [[code]](https://github.com/juntang-zhuang/torch_ACA)
 
 <b> [Decision Explanation and Feature Importance for Invertible Networks](https://arxiv.org/pdf/1910.00406.pdf)</b><br>
 <b> Juntang Zhuang</b>, Nicha C. Dvornek, Xiaoxiao Li, Junlin Yang, James S. Duncan. <i>ICCV 2019, XAIC </i> [<b>oral presentation</b>][[slides]](https://docs.google.com/presentation/d/1tmsWDohlSGfI3Ay6xYoJvdnERzY9wo9OhKQ0AUtZL8U/edit?usp=sharing) [[code]](https://github.com/juntang-zhuang/explain_invertible)

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Juntang Zhuang</title>
+
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+          body {
+            font-family: 'sans-serif';
+            font-size: 16px;
+            background-color: #FFFFFF;
+            color: #4F6071;
+          }
+          #header {
+            background-color: #f4f4f4;
+            /*background-color: #FFFFFF;*/
+            display: flex;
+            align-items: flex-end;
+            padding-top:60px;
+            padding-bottom:60px;
+          }
+          #footer {
+            background-color: #FFFFFF;
+            padding:60px;
+          }
+          #portrait {
+            border: 3px solid white;
+          }
+          #header-text {
+            margin-top: 60px;
+            margin-left: 220px;
+          }
+          #header-text-name {
+            font-size: 40px;
+          }
+          #header-text-email {
+            font-size: 20px;
+            font-style: italic;
+          }
+          .header-text-desc {
+            font-size: 20px;
+          }
+          .vspace-top {
+            margin-top: 30px;
+          }
+          .vspace-top-news {
+              margin-top: 15px;
+          }
+          .paper-image {
+            width: 150px;
+          }
+          .news-date {
+              font-weight: bold;
+          }
+          .paper-title {
+            font-weight: bold;
+          }
+          .paper-authors {
+            font-style: italic;
+          }
+    </style>
+</head>
+
+<body>
+    <center>
+    <div id='header'>
+        <div class='container'>
+            <div class='row'>
+                <!---
+                <div class="col-sm-3 offset-sm-1">
+                    <img src='imgs/portrait.jpeg' class='img-fluid' id='portrait'>
+                </div>
+                -->
+                
+                <div class="col">
+                  <div id='header-text-name'>
+                      Juntang Zhuang
+                  </div>
+                  <div id='header-text-email'>
+                    j[dot]zhuang[at]yale[dot]edu
+                  </div>
+                  <div>
+                    <a href="https://github.com/juntang-zhuang">[GitHub]</a>
+                    <a href="https://scholar.google.com/citations?user=78_Vob4AAAAJ&hl=en">[Google Scholar]</a>
+                    <a href="https://twitter.com/JuntangZhuang">[Twitter]</a>
+                    <a href="docs/cv_juntang_zhuang.pdf">[Download CV]</a> 
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </center>
+
+
+
+    <div class='container'>
+        <div class='row vspace-top'>
+            <div class='col offset-sm-1'>
+                <h1>Bio</h1>
+                <p>
+                    I am a Ph.D. student in Yale University, advised by Prof. James S. Duncan. 
+                    My research interest lies in machine learning and their biomedical applications. My research topic include 
+                    optimization of neural networks, numerical gradient estimation and theory of Neural ODEs, invertible networks,
+                    and their biomedical application such as disease diagnosis and biomarker selection.
+                </p>
+
+                <!--- List of news 
+                <div class='vspace-top'>
+                    <h1>News</h1>
+                </div>
+                
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        June 2020
+                    </div>
+                    <div class="col">
+                        I'll join Josh Tenenbaum's group as a Postdoc in August. If you're in Boston and wanna talk
+                        Neural Representations, reach out!
+                    </div>
+                </div>
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        June 2020
+                    </div>
+                    <div class="col">
+                        I just graduated Stanford with my <a href="docs/self_supervised_scene_rep_learning_vsitzmann.pdf">
+                        thesis on Self-supervised Scene Representation Learning</a>. There's a few interesting thoughts in there -
+                        especially check out the introduction and conclusion!
+                    </div>
+                </div>
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        March 2020
+                    </div>
+                    <div class="col">
+                        Our CVPR tutorial on Neural Rendering is on youtube, free to watch for everyone!
+                        Here's the <a href="https://www.youtube.com/watch?v=LCTYRqW-ne8">link to the morning session</a> -
+                        at 2:20:00, I'm giving an overview over Novel View Synthesis.
+                        Here's the <a href="https://www.youtube.com/watch?v=JlyGNvbGKB8">link to the afternoon session</a>.
+                    </div>
+                </div>
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        March 2020
+                    </div>
+                    <div class="col">
+                        Our state-of-the-art report on neural rendering was accepted to Eurographics 2020.
+                        Drop by our tutorial!
+                    </div>
+                </div>
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        November 2019
+                    </div>
+
+                    <div class="col">
+		    	Our paper "Scene Representation Networks: Continuous 3D-Structure-Aware Neural Scene Representations" wins an honorable mention for "Outstanding New Directions" at NeurIPS 2019! Watch my talk <a href="https://slideslive.com/38921749/track-1-session-3">here</a>.
+                    </div>
+                </div>
+
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        May 2019
+                    </div>
+
+                    <div class="col">
+                        I will join Prof. Noah Snavely's group at the Google NYC office over the summer and continue working
+                        on  deep learning for scene understanding and novel view synthesis.
+                    </div>
+                </div>
+
+                <div class='row vspace-top-news'>
+                    <div class="col-sm-2 news-date">
+                        March 2019
+                    </div>
+
+                    <div class="col">
+                        Our paper "DeepVoxels: Learning Persistent 3D Feature Embeddings" was accepted to CVPR as an oral!
+                        I will be in Los Angeles from June 16 to June 21 to present the paper.
+                    </div>
+                </div>
+                --->
+
+                <div class='vspace-top'>
+                    <h1>Publications</h1>
+                </div>
+
+                <!--- List of publications --->
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <video width="100%" playsinline="" autoplay="" loop="" preload="" muted="">
+                            <source src="adabelief/img/Beale2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients
+                        </div>
+                        <div class='paper-desc'>
+			    NeurIPS 2020 (Spotlight, Top 5%)
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Tommy Tang, Sekhar Tatikonda, Nicha Dvornek, Yifan Ding, Xenophon Papademetris, James S. Duncan
+                        </div>
+                        <div>
+                            <a href="https://juntang-zhuang.github.io/adabelief">[Project page]</a>
+                            <a href="">[Paper]</a>
+                            <a href="https://github.com/juntang-zhuang/Adabelief-Optimizer">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="adaptive_ckpt_adjoint/img/grad_error.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Adaptive Checkpoint Adjoint Method for Gradient Estimation in Neural ODE
+                        </div>
+                        <div class='paper-desc'>
+			                ICML 2020
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Xiaoxiao Li, , Nicha Dvornek, Sekhar Tatikonda, Xenophon Papademetris, James S. Duncan
+                        </div>
+                        <div>
+                            <a href="https://juntang-zhuang.github.io/adaptive_ckpt_adjoint">[Project page]</a>
+                            <a href="https://arxiv.org/abs/2006.02493">[Paper]</a>
+                            <a href="https://icml.cc/media/Slides/icml/2020/virtual(no-parent)-16-13-00UTC-5900-adaptive_checkp.pdf"> [Slides]</a>
+                            <a href="https://github.com/juntang-zhuang/torch_ACA">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/invnet.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Decision Explanation and Feature Importance for Invertible Networks
+                        </div>
+                        <div class='paper-desc'>
+			                ICCV 2019, XAIC (Oral presentation)
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Nicha C. Dvornek, Xiaoxiao Li, Junlin Yang, James S. Duncan
+                        </div>
+                        <div>
+                            <a href="https://arxiv.org/pdf/1910.00406.pdf">[Paper]</a>
+                            <a href="https://docs.google.com/presentation/d/1tmsWDohlSGfI3Ay6xYoJvdnERzY9wo9OhKQ0AUtZL8U/edit?usp=sharing"> [Slides]</a>
+                            <a href="https://github.com/juntang-zhuang/explain_invertible">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/shelfnet.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            ShelfNet for fast semantic segmentation
+                        </div>
+                        <div class='paper-desc'>
+			                ICCV 2019, CVRSUAD
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Junlin Yang, Lin Gu, Nicha C. Dvornek.
+                        </div>
+                        <div>
+                            <a href="https://openaccess.thecvf.com/content_ICCVW_2019/papers/CVRSUAD/Zhuang_ShelfNet_for_Fast_Semantic_Segmentation_ICCVW_2019_paper.pdf">[Paper]</a>
+                            <a href="https://github.com/juntang-zhuang/ShelfNet">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/invnet_asd.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Invertible Network for Classification and Biomarker Selection for ASD
+                        </div>
+                        <div class='paper-desc'>
+			                MICCAI 2019
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Nicha C. Dvornek, Xiaoxiao Li, Junlin Yang, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="Invertible Network for Classification and Biomarker Selection for ASD">[Paper]</a>
+                            <a href="https://github.com/juntang-zhuang/explain_invertible">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/domain.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Domain-Agnostic Learning with Anatomy-Consistent Embedding for Cross-Modality Liver Segmentation
+                        </div>
+                        <div class='paper-desc'>
+			                ICCV 2019, VRMI
+                        </div>
+                        <div class='paper-authors'>
+                            Junlin Yang, Nicha C. Dvornek, <b>Juntang Zhuang</b>, Julius Chapiro, Mingde Lin, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="https://openaccess.thecvf.com/content_ICCVW_2019/papers/VRMI/Yang_Domain-Agnostic_Learning_With_Anatomy-Consistent_Embedding_for_Cross-Modality_Liver_Segmentation_ICCVW_2019_paper.pdf">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/laddernet.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            LadderNet: Multi-path networks based on U-Net for medical image segmentation
+                        </div>
+                        <div class='paper-desc'>
+			                arXiv, 2018
+                        </div>
+                        <div class='paper-authors'>
+                           <b>Juntang Zhuang</b>
+                        </div>
+                        <div>
+                            <a href="https://juntang-zhuang.github.io/files/laddernet.pdf">[Paper]</a>
+                            <a href="https://github.com/juntang-zhuang/LadderNet">[Code]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/sis.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Prediction of treatment outcome for autism from structure of the brain based on sure independence screening
+                        </div>
+                        <div class='paper-desc'>
+			                ISBI 2019
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Nicha C. Dvornek, Qingyu Zhao, Xiaoxiao Li, Pamela Ventola, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7119202/pdf/nihms-1568086.pdf">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/rf_shadow.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Prediction of Pivotal response treatment outcome with task fMRI using random forest and variable selection
+                        </div>
+                        <div class='paper-desc'>
+			                ISBI 2018
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Nicha C. Dvornek, Xiaoxiao Li, Daniel Yang, Pamela Ventola, James S. Duncan
+                        </div>
+                        <div>
+                            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7532925/">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/two-level-rf.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Prediction of Severity and Treatment Outcome for ASD from fMRI
+                        </div>
+                        <div class='paper-desc'>
+			                MICCAI 2018, PRIME Workshop
+                        </div>
+                        <div class='paper-authors'>
+                            <b>Juntang Zhuang</b>, Nicha C. Dvornek, Xiaoxiao Li, Pamela Ventola, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="https://arxiv.org/abs/1810.11891">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/brain-cnn.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            Brain biomarker interpretation in ASD using deep learning and fMRI
+                        </div>
+                        <div class='paper-desc'>
+			                MICCAI 2018
+                        </div>
+                        <div class='paper-authors'>
+                            Xiaoxiao Li, Nicha C. Dvornek, <b>Juntang Zhuang</b>, Pamela Ventola, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="https://arxiv.org/pdf/1808.08296.pdf">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='row vspace-top'>
+                    <div class="col-sm-3">
+                        <img src="imgs/brain-cnn2.png" class='img-fluid'>
+                    </div>
+
+                    <div class="col">
+                        <div class='paper-title'>
+                            2-channel convolutional 3D deep neural network (2CC3D) for fMRI analysis: ASD classification and feature learning
+                        </div>
+                        <div class='paper-desc'>
+			                ISBI 2018
+                        </div>
+                        <div class='paper-authors'>
+                            Xiaoxiao Li, Nicha C. Dvornek, <b>Juntang Zhuang</b>, Pamela Ventola, James S. Duncan.
+                        </div>
+                        <div>
+                            <a href="https://ieeexplore.ieee.org/document/8363798">[Paper]</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div id='footer' class='vspace-top'>
+    <div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

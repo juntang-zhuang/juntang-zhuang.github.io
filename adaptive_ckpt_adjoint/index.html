@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Adaptive Checkpoint Adjoint Method for Gradient Estimation in Neural ODE">
+    <meta name="author" content="Juntang Zhuang,
+                                Nicha Dvornek,
+                                Xiaoxiao Li,
+                                Sekhar Tatikonda,
+                                Xenophon Papademetris,
+                                James S. Duncan">
+
+    <title>Adaptive Checkpoint Adjoint: fast and accurate gradient estimation in Neural ODE</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>Adaptive Checkpoint Adjoint: fast and accurate <br> gradient estimation in Neural ODE </h2>
+    <h4> (ICML 2020) </h4>
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p class="authors">
+        <a href="https://juntang-zhuang.github.io"> Juntang Zhuang</a>,
+        <a href="http://www.hellonicha.com/"> Nicha Dvornek</a>,
+        Xiaoxiao Li,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/sekhar-tatikonda"> Sekhar Tatikonda</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/xenophon-papademetris"> Xenophon Papademetris</a>,
+        <a href="https://medicine.yale.edu/profile/james_duncan/"> James S. Duncan </a>,
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2006.02493">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/juntang-zhuang/torch_ACA">Code</a>
+        <a class="btn btn-primary" href="https://www.youtube.com/playlist?list=PL7KkG3n9bER4ODAMzAKzfXIaF0ndUxK-N">Videos</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!--
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/Q2fLWGBeaiI" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        -->
+        <center>
+        <img src="img/grad_error.png" width="50%">
+        </center>
+        <hr>
+        <h2> Abstract </h2>
+        <p>
+            Neural ordinary differential equations (NODEs) have recently attracted increasing attention; however, their empirical 
+            performance on benchmarktasks (e.g. image classification) are significantlyinferior to discrete-layer models. We 
+            demonstratean explanation for their poorer performance is theinaccuracy of existing gradient estimation methods: 
+            the adjoint method has numerical errors in reverse-mode integration; the naive method directly back-propagates 
+            through ODE solvers, but suffers from a redundantly deep computation graph when searching for the optimal 
+            stepsize. We propose the Adaptive Checkpoint Adjoint(ACA) method: in automatic differentiation, ACA applies 
+            a trajectory checkpoint strategy which records the forward-mode trajectoryas the reverse-mode trajectory to guarantee 
+            accuracy; ACA deletes redundant components forshallow computation graphs; and ACA supports adaptive solvers. On image 
+            classification tasks, compared with the adjoint and naive method, ACA achieves half the error rate in half the 
+            training time; NODE trained with ACA outperforms ResNet in both accuracy and test-retest reliability. On time-series 
+            modeling, ACA outperforms competing methods. Finally, in an example of the three-body problem, we show NODE with ACA can 
+            incorporate physical knowledge to achieve better accuracy.
+        </p>
+    </div>
+
+<hr>
+    <div class="section">
+        <h2>Problems with exisiting methods</h2>
+        
+        <h4>Adjoint method suffers from numerical error</h4>
+            <center>
+            <img src='img/recon_error.png' class='img-fluid' width="60%">
+            </center>
+            
+            <div>   
+                The adjoint method takes the end-time state from forward-mode trajectory as initial value,
+                    and solves the ODE in reverse-time. Due to errors in numerical ODE solvers, the reconstrcuted trajectory can NOT 
+                    match the forward-time trajectory exactly. This further causes error in gradient estimation.
+                    <br> <br>
+            </div>
+            
+        <h4>Naive method suffers from deep computation graphs</h4>
+        <div>
+            The naive method records all computation process, hence requires a huge memory. 
+            It back-propagates through all computation graph, including the adaptation of stepsize; while this is unnecessary, we 
+            only need to back-propagates through the "accepted stepsize" and ignore the stepsize adaptation process. Hence the naive
+            method suffers from deep computation graphs, which is likely to cause exploding or vanishing gradient issues.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Adaptive Checkpoint Adjoint method</h2>
+        <center>
+            <img src='img/comparison.png' class='img-fluid' width="100%">
+        </center>
+        In automatic differentiation, ACA applies 
+        a trajectory checkpoint strategy which records the forward-mode trajectoryas the reverse-mode trajectory to guarantee 
+        accuracy; ACA deletes redundant components forshallow computation graphs; and ACA supports adaptive solvers.
+    </div>
+    <hr>
+   
+
+    <div class="section">
+        <h2>Experiments</h2>
+        <h4> Image Classification </h4>
+        <img src='img/cnn.png' class='img-fluid' width="100%">
+        <hr>
+
+        <h4> Predict the trajectory of a three-body system of UNKOWN masses</h4>
+        <video id="home1" controls="" preload="" width="100%" > 
+            <source type="video/mp4" src="img/example1.mp4" /> 
+        </video>
+        <video id="home1" controls="" preload="" width="100%"  > 
+            <source type="video/mp4" src="img/example2.mp4" /> 
+        </video>
+        <video id="home1" controls="" preload="" width="100%" > 
+            <source type="video/mp4" src="img/example3.mp4" /> 
+        </video>
+        <video id="home1" controls="" preload="" width="100%" > 
+            <source type="video/mp4" src="img/example3.mp4" /> 
+        </video>
+
+    </div>
+
+
+    <footer>
+        <p>Send feedback and questions to Juntang Zhuang at \( \texttt{j.zhuang@yale.edu}\)</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

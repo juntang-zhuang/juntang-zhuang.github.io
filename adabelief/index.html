@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients">
+    <meta name="author" content="Juntang Zhuang,
+                                Tommy Tang,
+                                Sekhar Tatikonda,
+                                Nicha Dvornek,
+                                Yifan Ding,
+                                Xenophon Papademetris,
+                                James S. Duncan">
+
+    <title>AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>AdaBelief Optimizer: fast as Adam, generalizes as good <br> as SGD, and sufficiently stable to train GANs.  </h2>
+    <h4> (NeurIPS 2020 Spotlight) </h4>
+    
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p class="authors">
+        <a href="https://juntang-zhuang.github.io"> Juntang Zhuang</a>,
+        Tommy Tang</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/sekhar-tatikonda"> Sekhar Tatikonda</a>,
+        <a href="http://www.hellonicha.com/"> Nicha Dvornek</a>,
+        <a> Yifan Ding </a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/xenophon-papademetris"> Xenophon Papademetris</a>,
+        <a href="https://medicine.yale.edu/profile/james_duncan/"> James S. Duncan </a>,
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/juntang-zhuang/Adabelief-Optimizer">Code</a>
+        <a class="btn btn-primary" href="https://www.youtube.com/playlist?list=PL7KkG3n9bER6YmMLrKJ5wocjlvP7aWoOu">Videos</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!--
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/Q2fLWGBeaiI" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        -->
+
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <video width="100%" playsinline="" autoplay="True" loop="True" preload="" muted="">
+                    <source src="img/Beale2.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <hr>
+        <h2> Abstract </h2>
+        <p>
+            Most popular optimizers for deep learning can be broadly categorized as adaptive methods (e.g. Adam) and accelerated schemes 
+            (e.g. stochastic gradient descent (SGD) with momentum). For many models such as convolutional neural networks (CNNs), adaptive 
+            methods typically converge faster but generalize worse compared to SGD; for complex settings such as generative adversarial 
+            networks (GANs), adaptive methods are typically the default because of their stability. We propose AdaBelief to simultaneously 
+            achieve three goals: fast convergence as in adaptive methods, good generalization as in SGD, and training stability. 
+            The intuition for AdaBelief is to adapt the stepsize according to the "belief" in the current gradient direction. 
+            Viewing the exponential moving average (EMA) of the noisy gradient as the prediction of the gradient at the next time step, 
+            if the observed gradient greatly deviates from the prediction, we distrust the current observation and take a small step; 
+            if the observed gradient is close to the prediction, we trust it and take a large step. We validate AdaBelief in extensive 
+            experiments, showing that it outperforms other methods with fast convergence and high accuracy on image classification and 
+            language modeling. Specifically, on ImageNet, AdaBelief achieves comparable accuracy to SGD. Furthermore, in the training of 
+            a GAN on Cifar10, AdaBelief demonstrates high stability and improves the quality of generated samples compared to a well-tuned 
+            Adam optimizer.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Algorithm</h2>
+        <hr>
+        <img src="img/adabelief_algo.png" width="100%">
+        <div>
+            Adam and AdaBelief are summarized in Algo.1 and Algo.2, where all operations are 
+            element-wise, with differences marked in blue. Note that no extra parameters are introduced in AdaBelief. For simplicity,
+             we omit the bias correction step. Specifically, in Adam, the update 
+             direction is \( m_t/\sqrt{v_t} \), where \(v_t\) is the EMA of \(g_t^2\); in AdaBelief, the update direction is \(m_t/\sqrt{s_t}\),
+              where \(s_t\) is the EMA (Exponential Moving Average) of \( (g_t - m_t)^2 \). Intuitively, viewing \( m_t \) as the prediction of \( g_t \), AdaBelief takes a 
+              large step when observation \( g_t \) is close to prediction m_t, and a small step when the observation greatly deviates
+               from the prediction.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Why AdaBelief is better?</h2>
+        
+        <h4>AdaBelief considers the curvature of loss function</h4>
+        <div class='row vspace-top'>
+            <div class="col-sm-6">
+                <img src='img/curvature.png' class='img-fluid' width="300%">
+            </div>
+
+            <div class="col">
+                <div>
+                    An ideal optimizer considers curva- ture of the loss function, instead of taking a large (small) step where the gradient is large (small).
+                    In region 3 , we demonstrate AdaBelief’s advantage over Adam in the “large gradient, small curvature” case. In this case, \( \vert g_t \vert \) and \( v_t \) are large, 
+                    but \( \vert g_t − g_{t-1} \vert \) and \( \vert s_t \vert \) are small; this could happen because of a small learning rate \(\alpha\). In this case, an ideal optimizer should increase its stepsize. 
+                    SGD uses a large stepsize (∼ \(\alpha \vert g_t \vert \)); in Adam, the denominator \( \sqrt{v_t} \) is large, hence the stepsize is small; in AdaBelief, denominator \( \sqrt{s_t} \) is small, hence 
+                    the stepsize is large as in an ideal optimizer.
+                </div>
+            </div>
+        </div>
+
+
+        <h4>AdaBelief considers the sign of gradient in denominator</h4>
+        <img src="img/grad_sign.png" width="100%">
+        <div>
+            Left: Consider \( f(x,y) = \vert x \vert + \vert y \vert \). Blue vectors represent the gradient, and the cross represents the optimal point. The optimizer oscillates in the y direction, and keeps moving forward
+             in the x direction. Right: Optimization process for the example on the left. Note that denominator \( \sqrt{v_{t,x}} = \sqrt{v_{t,y}} \) for Adam, hence the same stepsize in x and y direction; while \( \sqrt{s_{t,x}} < \sqrt{v_{t,y}} \) , 
+             hence AdaBelief takes a large step in the x direction, and a small step in the y direction.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Validation on Toy Problems</h2>
+        <center>
+            <video id="home1" controls="" preload="" width="80%" autoplay='True' loop='True'> 
+                <source type="video/mp4" src="img/Beale1.mp4" /> 
+            </video>
+            <video id="home2" controls="" preload="" width="80%" autoplay='True' loop='True'> 
+                <source type="video/mp4" src="img/Valley1.mp4" /> 
+            </video>
+            <div class="clear"></div> 
+            <video id="home1" controls="" preload="" width="80%" autoplay='True' loop='True'> 
+                <source type="video/mp4" src="img/McCormick1.mp4" /> 
+            </video>
+            <video id="home2" controls="" preload="" width="80%" autoplay='True' loop='True'> 
+                <source type="video/mp4" src="img/RotateQuadratic.mp4" /> 
+            </video>
+            <div class="clear"></div> 
+        </center>
+    </div>
+
+    <div class="section">
+        <h2>Experiments</h2>
+        <h4> Image Classification </h4>
+        <img src='img/image_recog.png' class='img-fluid' width="100%">
+        <hr>
+
+        <h4> Time-series Modeling </h4>
+        <img src='img/lstm.png' class='img-fluid' width="100%">
+        <hr>
+
+        <h4> Generative Adversarial Network </h4>
+        <img src='img/GAN.png' class='img-fluid' width="100%">
+
+    </div>
+
+
+    <footer>
+        <p>Send feedback and questions to Juntang Zhuang at \( \texttt{j.zhuang@yale.edu}\)</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

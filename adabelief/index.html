@@ -133,6 +133,22 @@
              in the x direction. Right: Optimization process for the example on the left. Note that denominator \( \sqrt{v_{t,x}} = \sqrt{v_{t,y}} \) for Adam, hence the same stepsize in x and y direction; while \( \sqrt{s_{t,x}} < \sqrt{v_{t,y}} \) , 
              hence AdaBelief takes a large step in the x direction, and a small step in the y direction.
         </div>
+            
+        <h4>Update direction in Adam is close to “sign descent” in low-variance case</h4>
+        <div>
+            Under the following assumptions: (1) assume \(g_t\) is drawn from a stationary distribution, hence after bias correction, \(\mathbb{E} v_t= (\mathbb{E} g_t )^2 + \mathbf{Var} g_t\). (2) low-noise assumption, assume \((\mathbb{E} g_t)^2 \gg \mathbf{Var} g_t\), 
+            hence we have \(\mathbb{E}g_t / \sqrt{ \mathbb{E} v_t } \approx \mathbb{E} g_t / \sqrt{(\mathbb{E} g_t)^2} = sign( \mathbb{E} g_t)\). (3) low-bias assumption, assume \(\beta_1^t\) (\(\beta_1\) to the power of \(t\)) is small, hence \(m_t\) as an estimator of \(\mathbb{E}g_t\) has a small bias \(\beta_1^t \mathbb{E} g_t\). 
+            Then
+\(\begin{equation}
+\label{eq:adam_update}
+\scalebox{1.0}{
+$
+    \Delta \theta_t^{Adam} = - \alpha \frac{m_t}{\sqrt{v_t} + \epsilon} \approx - \alpha \frac{\mathbb{E} g_t}{ \sqrt{(\mathbb{E}g_t)^2 + \mathbf{Var} g_t } + \epsilon} \approx - \alpha \frac{\mathbb{E} g_t}{ \vert \vert \mathbb{E}g_t \vert \vert } = - \alpha \  \mathrm{sign}( \mathbb{E} g_t )
+    $
+    }
+\end{equation} \) In this case, Adam behaves like a ``sign descent''; in 2D cases the update is \(\pm 45^{\circ}\) to the axis, hence deviates from the true gradient direction. 
+The ``sign update'' effect might cause the generalization gap between adaptive methods and SGD (e.g. on ImageNet). For AdaBelief, when the variance of $g_t$ is the same for all coordinates, the update direction matches the gradient direction; when the variance is not uniform, AdaBelief takes a small (large) step when the variance is large (small). 
+         </div>
     </div>
 
     <div class="section">
@@ -146,7 +162,7 @@
             </video>
             <div class="clear"></div> 
             <video id="home1" controls="" preload="" width="80%" autoplay='True' loop='True'> 
-                <source type="video/mp4" src="img/McCormick1.mp4" /> 
+                <source type="video/mp4" src="img/Valley4.mp4" /> 
             </video>
             <video id="home2" controls="" preload="" width="80%" autoplay='True' loop='True'> 
                 <source type="video/mp4" src="img/RotateQuadratic.mp4" /> 

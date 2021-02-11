@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="MALI: A memory efficient and reverse accurate integrator for Neural ODEs">
+    <meta name="author" content="Juntang Zhuang,
+                                Nicha Dvornek,
+                                Sekhar Tatikonda,
+                                James S. Duncan">
+
+    <title>MALI: A memory efficient and reverse accurate integrator for Neural ODEs</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>MALI: A memory efficient and reverse accurate</h2> <h2>integrator for Neural ODEs  </h2>
+    <h4> (ICLR 2021) </h4>
+    
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p class="authors">
+        <a href="https://juntang-zhuang.github.io"> Juntang Zhuang</a>,
+        <a href="http://www.hellonicha.com/"> Nicha Dvornek</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/sekhar-tatikonda"> Sekhar Tatikonda</a>,
+        <a href="https://medicine.yale.edu/profile/james_duncan/"> James S. Duncan </a>,
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2102.04668">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/juntang-zhuang/TorchDiffEqPack">Code</a>
+        <a class="btn btn-primary" href="https://juntang-zhuang.github.io/TorchDiffEqPack">Package</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!--
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/Q2fLWGBeaiI" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        -->
+
+        <hr>
+        <h2> Abstract </h2>
+        <p>
+            Neural ordinary differential equations (Neural ODEs) are a new family of deep-learning models with continuous depth. 
+            However, the numerical estimation of the gradient in the continuous case is not well solved: existing implementations of 
+            the adjoint method suffer from inaccuracy in reverse-time trajectory, while the naive method and the adaptive checkpoint 
+            adjoint method (ACA) have a memory cost that grows with integration time. In this project, based on the asynchronous 
+            leapfrog (ALF) solver, we propose the Memory-efficient ALF Integrator (MALI), which has a constant memory cost 
+            \textit{w.r.t} number of solver steps in integration similar to the adjoint method, and guarantees accuracy in
+             reverse-time trajectory (hence accuracy in gradient estimation). We validate MALI in various tasks: on image 
+             recognition tasks, to our knowledge, MALI is the first to enable feasible training of a Neural ODE on ImageNet and 
+             outperform a well-tuned ResNet, while existing methods fail due to either heavy memory burden or inaccuracy; 
+             for time series modeling, MALI significantly outperforms the adjoint method; and for continuous generative models, 
+             MALI achieves new state-of-the-art performance. 
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Algorithm</h2>
+        <hr>
+        <img src="img/comparison.png" width="100%">
+        <div>
+            MALI is based on the Asynchronous LeapFrog Integrator (ALF). ALF is a generic ODE solver for ODEs, and it defines a 
+            numerically accurate mapping between the initial condition and integrated value at end time. MALI takes advantage of the 
+            invertibility of ALF; since every step is invertible, we can delete intermediate states to achieve a constant memory cost;
+            the invertibility guarantees the reverse-time trajectory exactly matches the forward-time trajectory in the adjoint-state 
+            equation, hence it can accurately derive the gradient in the continuous case. To sum up, MALI has both advantages of the 
+            adjoint method by Chen et al. and adaptive checkpoint adjoint method: MALI is numerically reverse-accurate, and has a constant
+            memory cost w.r.t. integration time.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Continuous generative models</h2>
+        <hr>
+        <img src="img/ffjord.png" width="100%">
+        <img src="img/ffjord_sample.png" width="100%">
+        <div>
+            MALI is also applicable to FFJORD, and achieves new state-of-the-art performance for continuous generative models WITHOUT
+            modifying the model structure. The only difference is in the ODE solver.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Image recognition on ImageNet</h2>
+        <hr>
+        <img src="img/imagenet.png" width="100%">
+        <div>
+            To our knowledge, MALI is the first ODE solver to enable efficient training of CNN-ODEs on large-scale dataset such as
+            ImageNet. Other methods are not applicable to complicated systems for various reasons: the adjoint method suffer from 
+            inaccuracy in gradient estimation, because it forgets the forward-time trajectory, and the reconstructed reverse-time trajectory 
+            cannot match forward-time trajectory exactly; the naive method has a huge memory cost, because it records all  computations in
+            the memory. MALI achieves reverse accuracy at a constant memory cost, and is suitable for large-scale tasks.
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Send feedback and questions to Juntang Zhuang at \( \texttt{j.zhuang@yale.edu}\)</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

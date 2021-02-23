@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Multiple-shooting adjoint method forwhole-brain dynamic causal modeling">
+    <meta name="author" content="Juntang Zhuang,
+                                Nicha Dvornek,
+                                Sekhar Tatikonda,
+                                Xenophon Papademetris,
+                                Pamela Ventola,
+                                James S. Duncan">
+
+    <title>Multiple-shooting adjoint method forwhole-brain dynamic causal modeling</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>Multiple-shooting adjoint method for </h2> <h2>whole-brain dynamic causal modeling</h2>
+    <h4> (IPMI 2021) </h4>
+    
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p class="authors">
+        <a href="https://juntang-zhuang.github.io"> Juntang Zhuang</a>,
+        <a href="http://www.hellonicha.com/"> Nicha Dvornek</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/sekhar-tatikonda"> Sekhar Tatikonda</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/xenophon-papademetris"> Xenophon Papademetris</a>,
+        <a href="https://medicine.yale.edu/profile/pamela_ventola/"> Pamela Ventola </a>,
+        <a href="https://medicine.yale.edu/profile/james_duncan/"> James S. Duncan </a>,
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2102.11013">Paper</a>
+        <a class="btn btn-primary" href="https://github.com/juntang-zhuang/TorchDiffEqPack">Code</a>
+        <a class="btn btn-primary" href="https://jzkay12.github.io/TorchDiffEqPack">Package</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!--
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/Q2fLWGBeaiI" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        -->
+
+        <hr>
+        <h2> Abstract </h2>
+        <p>
+            Dynamic causal modeling (DCM) is a Bayesian framework to infer directed connections between compartments, 
+            and has been used to describe the interactions between underlying neural populations based on functional 
+            neuroimaging data. DCM is typically analyzed with the expectation-maximization (EM) algorithm. However, 
+            because the inversion of a large-scale continuous system is difficult when noisy observations are present, 
+            DCM by EM is typically limited to a small number of compartments (less than 10). Another drawback with 
+            the current method is its complexity; when the forward model changes, the posterior mean changes, and we 
+            need to re-derive the algorithm for optimization. In this project, we propose the Multiple-Shooting Adjoint (MSA) 
+            method to address these limitations. MSA uses the multiple-shooting method for parameter estimation in ordinary 
+            differential equations (ODEs) under noisy observations, and is suitable for large-scale systems such as whole-brain 
+            analysis in functional MRI (fMRI). Furthermore, MSA uses the adjoint method for accurate gradient estimation in the 
+            ODE; since the adjoint method is generic, MSA is a generic method for both linear and non-linear systems, and does
+            not require re-derivation of the algorithm as in EM. We validate MSA in extensive experiments: 1) 
+            in toy examples with both linear and non-linear models, we show that MSA achieves better accuracy in parameter
+             value estimation than EM; furthermore, MSA can be successfully applied to large systems with up to 100 compartments;
+            and 2) using real fMRI data, we apply MSA to the estimation of the whole-brain effective connectome and show 
+            improved classification of autism spectrum disorder (ASD) vs. control compared to using the functional connectome.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Algorithm</h2>
+        <hr>
+        <img src="img/multiple_shooting.png" width="100%">
+        <div>
+            The multiple-shooting method [1] is an extension of the shooting method to long time-series; it splits a long 
+            time-series into chunks,and  applies  the  shooting  method  to  each  chunk.  Integration  of  a  dynamicalsystem 
+            for a long time is typically subject to noise and numerical error, whilesolving short time-series is generally easier and 
+            more robust.As shown in the right subfigure of Fig. 1, a guess of initial condition at time t0is denoted as z0, and we can 
+            use any ODE solver to get the estimated integral curve z(t), t∈[t0,t1]. Similarly, we can guess the initial condition at 
+            time t1 as z1, and get z(t), t∈[t1,t2] by integration as in Eq. 3. Note that each time chunkis shorter than the entire 
+            chunk, hence easierto solve. The split causes another issue: the guess might not match estimationat boundary points. 
+            Therefore, we need to considerthis error of mismatch when updating parameters, 
+            and minimizing this mismatcherror is typically easier compared to directly analyzing the entire sequence.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Experiments on non-linear dynamical systems</h2>
+        <hr>
+        <img src="img/nonlinear.png" width="100%">
+        <div>
+            Since neither the multiple-shootmethod nor the adjoint state method requires the ODEfto be linear, our MSA 
+            can be applied to general non-linear systems. Furthermore, since our implemen-tation is in PyTorch which 
+            supports automatic differentiation, we only need to specify f when fitting different models, and the gradient will 
+            be calculated automatically. Therefore, MSA is an off-the-shelf method, and is suitable for general non-linear ODEs
+             both in theory and implementation.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Application to whole-brain dynamical causal modeling</h2>
+        <hr>
+        <img src="img/brain.png" width="100%">
+        <div>
+            We use the AAL atlas [20] containing 116 ROIs. For eachsubject, the parameters for dynamic causal modeling as 
+            in Eq. 10 is estimatedusing MSA. An example snapshot of the effective connectome (EC) during thetwo  tasks 
+            is  shown in Fig.6,  showing MSA captures the dynamic EC during different tasks.
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Send feedback and questions to Juntang Zhuang at \( \texttt{j.zhuang@yale.edu}\)</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

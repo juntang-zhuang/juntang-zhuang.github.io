@@ -1,0 +1,7 @@
+@article{zhuang2020adabelief,
+  title={AdaBelief Optimizer: Adapting Stepsizes by the Belief in Observed Gradients},
+  author={Zhuang, Juntang and Tang, Tommy and Ding, Yifan and Tatikonda, Sekhar C and Dvornek, Nicha and Papademetris, Xenophon and Duncan, James},
+  journal={Advances in Neural Information Processing Systems},
+  volume={33},
+  year={2020}
+}

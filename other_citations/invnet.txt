@@ -1,0 +1,8 @@
+@inproceedings{zhuang2019decision,
+  title={Decision explanation and feature importance for invertible networks},
+  author={Zhuang, Juntang and Dvornek, Nicha C and Li, Xiaoxiao and Yang, Junlin and Duncan, James},
+  booktitle={2019 IEEE/CVF International Conference on Computer Vision Workshop (ICCVW)},
+  pages={4235--4239},
+  year={2019},
+  organization={IEEE}
+}

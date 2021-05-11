@@ -1,0 +1,6 @@
+@article{zhuang2018laddernet,
+  title={Laddernet: Multi-path networks based on u-net for medical image segmentation},
+  author={Zhuang, Juntang},
+  journal={arXiv preprint arXiv:1810.07810},
+  year={2018}
+}

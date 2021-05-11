@@ -1,0 +1,7 @@
+@inproceedings{zhuang2019shelfnet,
+  title={Shelfnet for fast semantic segmentation},
+  author={Zhuang, Juntang and Yang, Junlin and Gu, Lin and Dvornek, Nicha},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops},
+  pages={0--0},
+  year={2019}
+}

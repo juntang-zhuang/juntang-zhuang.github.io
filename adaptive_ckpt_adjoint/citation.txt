@@ -1,0 +1,8 @@
+@inproceedings{zhuang2020adaptive,
+  title={Adaptive checkpoint adjoint method for gradient estimation in neural ODE},
+  author={Zhuang, Juntang and Dvornek, Nicha and Li, Xiaoxiao and Tatikonda, Sekhar and Papademetris, Xenophon and Duncan, James},
+  booktitle={International Conference on Machine Learning},
+  pages={11639--11649},
+  year={2020},
+  organization={PMLR}
+}

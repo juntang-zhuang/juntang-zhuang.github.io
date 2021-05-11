@@ -1,0 +1,8 @@
+@inproceedings{zhuang2019prediction,
+  title={Prediction of treatment outcome for autism from structure of the brain based on sure independence screening},
+  author={Zhuang, Juntang and Dvornek, Nicha C and Zhao, Qingyu and Li, Xiaoxiao and Ventola, Pamela and Duncan, James S},
+  booktitle={2019 IEEE 16th International Symposium on Biomedical Imaging (ISBI 2019)},
+  pages={404--408},
+  year={2019},
+  organization={IEEE}
+}

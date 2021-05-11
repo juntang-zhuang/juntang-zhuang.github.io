@@ -1,0 +1,6 @@
+@article{zhuang2021multiple,
+  title={Multiple-shooting adjoint method for whole-brain dynamic causal modeling},
+  author={Zhuang, Juntang and Dvornek, Nicha and Tatikonda, Sekhar and Papademetris, Xenophon and Ventola, Pamela and Duncan, James},
+  journal={Information Processing in Medical Imaging (IPMI)},
+  year={2021}
+}

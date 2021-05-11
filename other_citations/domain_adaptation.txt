@@ -1,0 +1,7 @@
+@inproceedings{yang2019domain,
+  title={Domain-agnostic learning with anatomy-consistent embedding for cross-modality liver segmentation},
+  author={Yang, Junlin and Dvornek, Nicha C and Zhang, Fan and Zhuang, Juntang and Chapiro, Julius and Lin, MingDe and Duncan, James S},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision Workshops},
+  pages={0--0},
+  year={2019}
+}

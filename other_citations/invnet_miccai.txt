@@ -1,0 +1,8 @@
+@inproceedings{zhuang2019invertible,
+  title={Invertible network for classification and biomarker selection for asd},
+  author={Zhuang, Juntang and Dvornek, Nicha C and Li, Xiaoxiao and Ventola, Pamela and Duncan, James S},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={700--708},
+  year={2019},
+  organization={Springer}
+}

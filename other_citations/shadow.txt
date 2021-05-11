@@ -1,0 +1,8 @@
+@inproceedings{zhuang2018prediction,
+  title={Prediction of pivotal response treatment outcome with task fmri using random forest and variable selection},
+  author={Zhuang, Juntang and Dvornek, Nicha C and Li, Xiaoxiao and Yang, Daniel and Ventola, Pamela and Duncan, James S},
+  booktitle={2018 IEEE 15th International Symposium on Biomedical Imaging (ISBI 2018)},
+  pages={97--100},
+  year={2018},
+  organization={IEEE}
+}

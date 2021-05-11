@@ -1,0 +1,8 @@
+@inproceedings{zhuang2018prediction,
+  title={Prediction of Severity and Treatment Outcome for ASD from fMRI},
+  author={Zhuang, Juntang and Dvornek, Nicha C and Li, Xiaoxiao and Ventola, Pamela and Duncan, James S},
+  booktitle={International Workshop on PRedictive Intelligence In MEdicine},
+  pages={9--17},
+  year={2018},
+  organization={Springer}
+}

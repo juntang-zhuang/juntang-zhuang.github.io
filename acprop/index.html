@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+          content="Momentum Centering and Asynchronous Update for Adaptive Gradient Methods">
+    <meta name="author" content="Juntang Zhuang,
+                                Yifan Ding,
+                                Tommy Tang,
+                                Nicha Dvornek,
+                                Sekhar Tatikonda,
+                                James S. Duncan">
+
+    <title>Momentum Centering and Asynchronous Update for Adaptive Gradient Methods</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>ACProp Optimizer: asynchronous version of AdaBelief with better performance </h2>
+    <h4> (NeurIPS 2021) </h4>
+    
+<!--            <p class="abstract">An interpretable, data-efficient, and scalable neural scene representation.</p>-->
+    <hr>
+    <p class="authors">
+        <a href="https://juntang-zhuang.github.io"> Juntang Zhuang</a>,
+        <a> Yifan Ding </a>,
+        <a>Tommy Tang</a>,
+        <a href="http://www.hellonicha.com/"> Nicha Dvornek</a>,
+        <a href="https://seas.yale.edu/faculty-research/faculty-directory/sekhar-tatikonda"> Sekhar Tatikonda</a>,
+        <a href="https://medicine.yale.edu/profile/james_duncan/"> James S. Duncan </a>,
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://github.com/juntang-zhuang/ACProp-Optimizer">Code</a>
+        <a class="btn btn-primary" href="citation.txt">Citation</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!--
+        <div class="vcontainer">
+            <iframe class='video' src="https://www.youtube.com/embed/Q2fLWGBeaiI" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        -->
+        <figure class="half">
+  <table>
+    <tr>
+      <td>
+        <img style="width:500px;height:400px" src="img/rosenbrock_acprop.gif">
+      </td>
+      <td>
+        <img style="width:500px;heighr:300px" src="img/dist_traj.png">
+      </td>
+    </tr>
+  </table>
+</figure>
+
+        <h2> Abstract </h2>
+        <p>
+            We propose ACProp (Asynchronous-centering-Prop), an adaptive optimizer which combines centering of second momentum and asynchronous update (e.g. for \(t\)-th update, denominator uses information up to step \(t-1\), while numerator uses gradient at \(t\)-th step). 
+ACProp has both strong theoretical properties and empirical performance. 
+With the example by Reddi et al. (2018), we show that asynchronous optimizers (e.g. AdaShift, ACProp) have weaker convergence condition than synchronous optimizers (e.g. Adam, RMSProp, AdaBelief); within asynchronous optimizers, 
+we show that centering of second momentum further weakens the convergence condition. 
+We demonstrate that ACProp has a convergence rate of \(O(\frac{1}{\sqrt{T}})\) for the stochastic non-convex case, which matches the oracle rate and outperforms the \(O(\frac{logT}{\sqrt{T}})\) rate of RMSProp and Adam. 
+We validate ACProp in extensive empirical studies: ACProp outperforms both SGD and other adaptive optimizers in image classification with CNN, and outperforms well-tuned adaptive optimizers in the training of various GAN models, reinforcement learning and transformers. 
+To sum up, ACProp has good theoretical properties including weak convergence condition and optimal convergence rate, and strong empirical performance including good generalization like SGD and training stability like Adam.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Algorithm</h2>
+        <hr>
+        <img src="img/acprop_algo.png" width="100%">
+        <div>
+            We first introduce the notion of ``sync (async)'' and ``center (uncenter)''. \textit{(a) Sync vs Async} The update on parameter \(x_t\) can be generally split into a numerator (e.g. \(m_t, g_t\)) and a denominator (e.g. \(\sqrt{s_t}, \sqrt{v_t}\)). We call it ``sync'' if the denominator depends on \(g_t\), such as in Adam and RMSProp; and call it ``async'' if the denominator is independent of \(g_t\), for example, denominator uses information up to step \(t-1\) for the \(t\)-th step. \textit{(b) Center vs Uncenter} The ``uncentered'' update uses \(v_t\), the exponential moving average (EMA) of \(g_t^2\); while the ``centered'' update uses \(s_t\), the EMA of \((g_t-m_t)^2\).
+        </div>
+        <img src="img/optimizer_summary.png" width="100%">
+        <div>
+            We broadly categorize adaptive optimizers according to different criteria. (a) <b>Centered v.s. uncentered</b> Most optimizers such as Adam and AdaDelta uses uncentered second momentum in the denominator; RMSProp-center , SDProp  and AdaBelief  use square root of centered second momentum in the denominator. AdaBelief  is shown to achieve good generalization like the SGD family, fast convergence like the adaptive family, and training stability in complex settings such as GANs. (b) <b>Sync vs async</b> The synchronous optimizers typically use gradient \(g_t\) in both numerator and denominator, which leads to correlation between numerator and denominator; most existing optimizers belong to this category. The asynchronous optimizers decorrelate numerator and denominator (e.g. by using \(g_t\) as numerator and use \(\{g_0,...g_{t-1}\}\) in denominator for the \(t\)-th update),  
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Sync vs Async</h2>
+        <div> Consider the following problem </div>
+        <center>
+        \(f_t(x) = 
+    \begin{cases}
+    Px,&\ \textit{if  } t \% P = 1 \\
+    -x, &\ \textit{Otherwise} \\
+    \end{cases}
+    x \in [-1,1], P \in \mathbb{N}, P \geq 3\)
+        </center>
+        <div> Sync optimizers (Adam, RMSProp) might diverge while async-optimizers always converge for any hyper-parameter \(\beta_1, \beta_2, P\) </div>
+        <img src="img/convergence.png" width="100%">
+    </div>
+
+    <div class="section">
+        <h2>Async-uncenter vs Async-center</h2>
+        <div> Consider the following problem </div>
+        <center>
+        \(f_t(x) = 
+    \begin{cases}
+    %-100, \ \ \ \ \ \ \ \textit{if } x <= 0 \\
+    P/2 \times x, \ \ \ t \% P ==1 \\
+    -x, \ \ \ \ \ \ \ \ \ \ \  t \% P ==P-2 \\
+    0, \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textit{otherwise} \\
+    \end{cases}
+     P>3, P \in \mathbb{N}, x \in [0,1].
+     \)
+        </center>
+        <div> Async-center optimizer (ACProp) has weaker conditions for convergence compared to Async-uncenter (AdaShift) optimizer </div>
+        <img src="img/center_uncenter.png" width="100%">
+    </div>
+
+    <div class="section">
+        <h2>Experiments (Better performance than AdaBelief and RAdam)</h2>
+        <img src="img/CNN.png" width="100%">
+        <img src="img/GAN.png" width="100%">
+    </div>
+
+    <footer>
+        <p>Send feedback and questions to Juntang Zhuang at \( \texttt{j.zhuang@yale.edu}\)</a></p>
+    </footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+@article{zhuang2022surrogate,
+  title={Surrogate gap minimization improves sharpness-aware training},
+  author={Zhuang, Juntang and Gong, Boqing and Yuan, Liangzhe and Cui, Yin and Adam, Hartwig and Dvornek, Nicha and Tatikonda, Sekhar and Duncan, James and Liu, Ting},
+  journal={arXiv preprint arXiv:2203.08065},
+  year={2022}
+}

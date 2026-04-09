@@ -79,6 +79,33 @@
         .paper-authors {
             font-style: italic;
         }
+
+        .lang-toggle-wrapper {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .lang-btn {
+            background-color: transparent;
+            color: #4F6071;
+            border: 2px solid #4F6071;
+            border-radius: 20px;
+            padding: 6px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 5px;
+        }
+
+        .lang-btn:hover {
+            background-color: #4F6071;
+            color: white;
+        }
+
+        .lang-btn.active {
+            background-color: #4F6071;
+            color: white;
+        }
     </style>
 </head>
 
@@ -103,7 +130,11 @@
                         <div>
                             <a href="https://github.com/juntang-zhuang">[GitHub]</a>
                             <a href="https://scholar.google.com/citations?user=78_Vob4AAAAJ&hl=en">[Google Scholar]</a>
-                            <a href="https://twitter.com/JuntangZhuang">[Twitter]</a>
+                            <a href="https://x.com/archanfel_anoth">[Twitter]</a>
+                        </div>
+                        <div class="lang-toggle-wrapper">
+                            <button class="lang-btn active" onclick="switchLang('en')">English</button>
+                            <button class="lang-btn" onclick="switchLang('zh')">中文</button>
                         </div>
                     </div>
                 </div>
@@ -116,76 +147,72 @@
     <div class='container'>
         <div class='row vspace-top'>
             <div class='col offset-sm-1'>
-                <p>
-                    I lead pretraining team at <a href="https://x.ai/">xAI</a>, previously I was working at <a
-                        href="https://openai.com/">OpenAI</a>. I'm the pretraining lead of Grok-4.2/4.1/4-fast, core
-                    pretraining recipe contributor to Grok 2/3/4, and pretraining lead for Grok 2/3/4-mini. I'm also a
-                    core contributor to GPT-4o, and the inventor of GPT4-Turbo long-context algorithm, and a
-                    primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding. I'm actively hiring,
-                    feel free to email me if you are interested!
+                <p data-i18n="bio">
+                    I lead pretraining team at <a href="https://x.ai/">xAI</a>. I'm the pretraining lead of Grok-4.2/4.1/4-fast and Grok 2/3/4-mini, pretraining lead for Grok-Voice on X and Tesla, and core pretraining recipe contributor to Grok 2/3/4.<br>
+                    Before joining xAI, I worked as a Research Scientist at OpenAI. I'm a core contributor to GPT-4o, and the inventor of GPT4-Turbo long-context algorithm, and a
+                    primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding.
                 </p>
 
 
                 <div class='vspace-top'>
-                    <h1>Projects</h1>
+                    <h1 data-i18n="projects">Projects</h1>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Production models pretraining, including
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_prod">Production models pretraining, including
                     Grok-Voice on X and
                     Tesla, moderator and decider on
-                    X, and enterprise API models of xAI.</a>
+                    X, and enterprise API models of xAI.</span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok-4.2: Pretraining lead.</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok42">Grok-4.2: Pretraining lead.</span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok4.1:<a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok41">Grok4.1:<a
                         href=https://x.com/archanfel_anoth/status/1954928776095384059> Multimodal pretraining
-                        lead.</a>
+                        lead.</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok4-fast: <a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4fast">Grok4-fast: <a
                         href="https://x.ai/news/grok-4-fast/">Pretraining
-                        lead.</a>
+                        lead.</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok4: Core pretraining recipe.
-                    </a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4">Grok4: Core pretraining recipe.</span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok4-mini: Pretraining
-                    lead.</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4mini">Grok4-mini: Pretraining
+                    lead.</span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok3-mini-chat & Grok3-mini-reasoning: <a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok3mini">Grok3-mini-chat & Grok3-mini-reasoning: <a
                         href="https://x.ai/news/grok-3">Pretraining
-                        lead. Posttraining and reasoning core recipe.</a>
+                        lead. Posttraining and reasoning core recipe.</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok3: <a href="https://x.ai/news/grok-3"> Core pretraining
-                        recipe.</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok3">Grok3: <a href="https://x.ai/news/grok-3"> Core pretraining
+                        recipe.</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining
-                        lead</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok2mini">Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining
+                        lead</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Grok2: <a href="https://x.ai/blog/grok-2"> Core pretraining
-                        recipe.</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok2">Grok2: <a href="https://x.ai/blog/grok-2"> Core pretraining
+                        recipe.</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GPT-4o: <a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_gpt4o">GPT-4o: <a
                         href="https://openai.com/gpt-4o-contributions/">core
-                        contributor</a>
+                        contributor</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GPT4-Turbo: <a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_gpt4turbo">GPT4-Turbo: <a
                         href="https://openai.com/blog/new-models-and-developer-products-announced-at-devday">core
                         contributor,
-                        inventor of OpenAI's first long-context algorithm</a>
+                        inventor of OpenAI's first long-context algorithm</a></span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DALL &middot E3: <a
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_dalle3">DALL &middot E3: <a
                         href="https://openai.com/dall-e-3">primary
-                        contributor</a>
+                        contributor</a></span>
                 </div>
 
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; OpenAI Embedding model: <a
-                        href="https://openai.com/blog/new-embedding-models-and-api-updates">first contributor</a></div>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_embedding">OpenAI Embedding model: <a
+                        href="https://openai.com/blog/new-embedding-models-and-api-updates">first contributor</a></span></div>
 
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GPT-4: <a
-                        href="https://arxiv.org/abs/2303.08774">co-author</a>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_gpt4">GPT-4: <a
+                        href="https://arxiv.org/abs/2303.08774">co-author</a></span>
                     <div class='vspace-top'>
-                        <h1>Sample Packages</h1>
+                        <h1 data-i18n="packages">Sample Packages</h1>
                     </div>
-                    <div>
+                    <div data-i18n="pkg1">
                         1. AdaBelief optimizer implemented in <a
                             href="https://github.com/juntang-zhuang/Adabelief-Optimizer">[PyTorch]</a>,
                         <a
@@ -194,7 +221,7 @@
                             Flax]</a>,
                         <a href="https://optax.readthedocs.io/en/latest/api.html#optax.adabelief">[Deepmind Optax]</a>.
                     </div>
-                    <div>
+                    <div data-i18n="pkg2">
                         2. <a href="https://jzkay12.github.io/TorchDiffEqPack/">[TorchDiffEqPack]</a> for accurate and
                         memory-efficient ODE solvers for deep learning.
                     </div>
@@ -282,7 +309,7 @@
                 --->
 
                     <div class='vspace-top'>
-                        <h1>Publications</h1>
+                        <h1 data-i18n="publications">Publications</h1>
                     </div>
 
                     <!--- List of publications --->
@@ -734,6 +761,104 @@
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="js/bootstrap.min.js"></script>
+
+<script>
+var currentLang = 'en';
+
+var translations = {
+    bio: {
+        en: 'I lead pretraining team at <a href="https://x.ai/">xAI</a>. I\'m the pretraining lead of Grok-4.2/4.1/4-fast and Grok 2/3/4-mini, pretraining lead for Grok-Voice on X and Tesla, and core pretraining recipe contributor to Grok 2/3/4.<br>Before joining xAI, I worked as a Research Scientist at <a href="https://openai.com/">OpenAI</a>. I\'m a core contributor to GPT-4o, and the inventor of GPT4-Turbo long-context algorithm, and a primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding.',
+        zh: '我在 <a href="https://x.ai/">xAI</a> 带领预训练团队，主导了 Grok-4.2/4.1/4-fast、Grok 2/3/4-mini 以及 X 和 Tesla 上 Grok-Voice 的预训练，也深度参与了 Grok 2/3/4 的预训练工作。<br>加入 xAI 之前，我在 <a href="https://openai.com/">OpenAI</a> 担任研究科学家，期间深度参与了 GPT-4o 的研发，提出了 GPT4-Turbo 长上下文算法，并在 DALL-E 3 和 OpenAI Embedding 项目中发挥了关键作用。'
+    },
+    projects: { en: 'Projects', zh: '项目经历' },
+    packages: { en: 'Sample Packages', zh: '代表性开源项目' },
+    publications: { en: 'Publications', zh: '论文发表' },
+    proj_prod: {
+        en: 'Production models pretraining, including Grok-Voice on X and Tesla, moderator and decider on X, and enterprise API models of xAI.',
+        zh: '线上模型预训练，包括 X 和 Tesla 平台上的 Grok-Voice、X 平台的内容审核与决策模型，以及 xAI 企业级 API 模型。'
+    },
+    proj_grok42: {
+        en: 'Grok-4.2: Pretraining lead.',
+        zh: 'Grok-4.2：预训练负责人。'
+    },
+    proj_grok41: {
+        en: 'Grok4.1:<a href=https://x.com/archanfel_anoth/status/1954928776095384059> Multimodal pretraining lead.</a>',
+        zh: 'Grok4.1：<a href=https://x.com/archanfel_anoth/status/1954928776095384059>多模态预训练负责人。</a>'
+    },
+    proj_grok4fast: {
+        en: 'Grok4-fast: <a href="https://x.ai/news/grok-4-fast/">Pretraining lead.</a>',
+        zh: 'Grok4-fast：<a href="https://x.ai/news/grok-4-fast/">预训练负责人。</a>'
+    },
+    proj_grok4: {
+        en: 'Grok4: Core pretraining recipe.',
+        zh: 'Grok4：核心预训练贡献者。'
+    },
+    proj_grok4mini: {
+        en: 'Grok4-mini: Pretraining lead.',
+        zh: 'Grok4-mini：预训练负责人。'
+    },
+    proj_grok3mini: {
+        en: 'Grok3-mini-chat & Grok3-mini-reasoning: <a href="https://x.ai/news/grok-3">Pretraining lead. Posttraining and reasoning core recipe.</a>',
+        zh: 'Grok3-mini-chat & Grok3-mini-reasoning：<a href="https://x.ai/news/grok-3">预训练负责人，后训练及推理的核心贡献者。</a>'
+    },
+    proj_grok3: {
+        en: 'Grok3: <a href="https://x.ai/news/grok-3"> Core pretraining recipe.</a>',
+        zh: 'Grok3：<a href="https://x.ai/news/grok-3">核心预训练贡献者。</a>'
+    },
+    proj_grok2mini: {
+        en: 'Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining lead</a>',
+        zh: 'Grok2-mini：<a href="https://x.ai/blog/grok-2">预训练负责人</a>'
+    },
+    proj_grok2: {
+        en: 'Grok2: <a href="https://x.ai/blog/grok-2"> Core pretraining recipe.</a>',
+        zh: 'Grok2：<a href="https://x.ai/blog/grok-2">核心预训练贡献者。</a>'
+    },
+    proj_gpt4o: {
+        en: 'GPT-4o: <a href="https://openai.com/gpt-4o-contributions/">core contributor</a>',
+        zh: 'GPT-4o：<a href="https://openai.com/gpt-4o-contributions/">核心贡献者</a>'
+    },
+    proj_gpt4turbo: {
+        en: 'GPT4-Turbo: <a href="https://openai.com/blog/new-models-and-developer-products-announced-at-devday">core contributor, inventor of OpenAI\'s first long-context algorithm</a>',
+        zh: 'GPT4-Turbo：<a href="https://openai.com/blog/new-models-and-developer-products-announced-at-devday">核心贡献者，发明了 OpenAI 首个长上下文算法</a>'
+    },
+    proj_dalle3: {
+        en: 'DALL &middot; E3: <a href="https://openai.com/dall-e-3">primary contributor</a>',
+        zh: 'DALL &middot; E3：<a href="https://openai.com/dall-e-3">主要贡献者</a>'
+    },
+    proj_embedding: {
+        en: 'OpenAI Embedding model: <a href="https://openai.com/blog/new-embedding-models-and-api-updates">first contributor</a>',
+        zh: 'OpenAI Embedding 模型：<a href="https://openai.com/blog/new-embedding-models-and-api-updates">首位贡献者</a>'
+    },
+    proj_gpt4: {
+        en: 'GPT-4: <a href="https://arxiv.org/abs/2303.08774">co-author</a>',
+        zh: 'GPT-4：<a href="https://arxiv.org/abs/2303.08774">共同作者</a>'
+    },
+    pkg1: {
+        en: '1. AdaBelief optimizer implemented in <a href="https://github.com/juntang-zhuang/Adabelief-Optimizer">[PyTorch]</a>, <a href="https://www.tensorflow.org/addons/api_docs/python/tfa/optimizers/AdaBelief">[Tensorflow-Addons]</a>, <a href="https://flax.readthedocs.io/en/latest/_autosummary/flax.optim.AdaBelief.html">[Google Flax]</a>, <a href="https://optax.readthedocs.io/en/latest/api.html#optax.adabelief">[Deepmind Optax]</a>.',
+        zh: '1. AdaBelief 优化器，已集成至 <a href="https://github.com/juntang-zhuang/Adabelief-Optimizer">[PyTorch]</a>、<a href="https://www.tensorflow.org/addons/api_docs/python/tfa/optimizers/AdaBelief">[Tensorflow-Addons]</a>、<a href="https://flax.readthedocs.io/en/latest/_autosummary/flax.optim.AdaBelief.html">[Google Flax]</a>、<a href="https://optax.readthedocs.io/en/latest/api.html#optax.adabelief">[Deepmind Optax]</a> 等主流框架。'
+    },
+    pkg2: {
+        en: '2. <a href="https://jzkay12.github.io/TorchDiffEqPack/">[TorchDiffEqPack]</a> for accurate and memory-efficient ODE solvers for deep learning.',
+        zh: '2. <a href="https://jzkay12.github.io/TorchDiffEqPack/">[TorchDiffEqPack]</a>：面向深度学习的高精度、低内存开销 ODE 求解器。'
+    }
+};
+
+function switchLang(lang) {
+    currentLang = lang;
+    var btns = document.querySelectorAll('.lang-btn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].classList.remove('active');
+    }
+    event.target.classList.add('active');
+    var elems = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < elems.length; i++) {
+        var key = elems[i].getAttribute('data-i18n');
+        if (translations[key]) {
+            elems[i].innerHTML = translations[key][currentLang];
+        }
+    }
+}
+</script>
 </body>
 
 </html>

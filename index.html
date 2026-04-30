@@ -148,44 +148,45 @@
         <div class='row vspace-top'>
             <div class='col offset-sm-1'>
                 <p data-i18n="bio">
-                    I lead pretraining team at <a href="https://x.ai/">xAI</a>. I'm the pretraining lead of Grok-4.2/4.1/4-fast and Grok 2/3/4-mini, pretraining lead for Grok-Voice on X and Tesla, and core pretraining recipe contributor to Grok 2/3/4.<br>
-                    Before joining xAI, I worked as a Research Scientist at OpenAI. I'm a core contributor to GPT-4o, and the inventor of GPT4-Turbo long-context algorithm, and a
+                    I lead the pretraining team at <a href="https://x.ai/">xAI</a>, working on large-scale training infrastructure and core recipes. I am the pretrain lead for Grok-chat/code, and the pretrain lead for Grok-Voice on X and Tesla. I'm also the RL lead for Grok-code.<br>
+                    Before joining xAI, I worked as a Research Scientist at OpenAI. I'm a core contributor to GPT-4o, the inventor of GPT4-Turbo 128k long-context algorithm, a
                     primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding.
                 </p>
 
 
                 <div class='vspace-top'>
-                    <h1 data-i18n="projects">Projects</h1>
+                    <h1 data-i18n="projects">Model Releases</h1>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_prod">Production models pretraining, including
-                    Grok-Voice on X and
-                    Tesla, moderator and decider on
-                    X, and enterprise API models of xAI.</span>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok43code">Grok4.3-code: Pretraining and RL lead. Core recipe.</span>
                 </div>
-                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok42">Grok-4.2: Pretraining lead.</span>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok43chat">Grok4.3-chat: Pretraining lead. Core recipe.</span>
+                </div>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok42">Grok4.2: Pretraining lead. Core recipe.</span>
+                </div>
+                <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_prod">Grok-Voice (X and Tesla): Pretraining lead. Core recipe.</span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok41">Grok4.1:<a
                         href=https://x.com/archanfel_anoth/status/1954928776095384059> Multimodal pretraining
-                        lead.</a></span>
+                        lead. Core recipe.</a></span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4fast">Grok4-fast: <a
                         href="https://x.ai/news/grok-4-fast/">Pretraining
-                        lead.</a></span>
+                        lead. Core recipe.</a></span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4">Grok4: Core pretraining recipe.</span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok4mini">Grok4-mini: Pretraining
-                    lead.</span>
+                    lead. Core recipe.</span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok3mini">Grok3-mini-chat & Grok3-mini-reasoning: <a
                         href="https://x.ai/news/grok-3">Pretraining
-                        lead. Posttraining and reasoning core recipe.</a></span>
+                        lead. Posttraining and RL core recipe.</a></span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok3">Grok3: <a href="https://x.ai/news/grok-3"> Core pretraining
                         recipe.</a></span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok2mini">Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining
-                        lead</a></span>
+                        lead. Core recipe.</a></span>
                 </div>
                 <div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span data-i18n="proj_grok2">Grok2: <a href="https://x.ai/blog/grok-2"> Core pretraining
                         recipe.</a></span>
@@ -767,47 +768,55 @@ var currentLang = 'en';
 
 var translations = {
     bio: {
-        en: 'I lead pretraining team at <a href="https://x.ai/">xAI</a>. I\'m the pretraining lead of Grok-4.2/4.1/4-fast and Grok 2/3/4-mini, pretraining lead for Grok-Voice on X and Tesla, and core pretraining recipe contributor to Grok 2/3/4.<br>Before joining xAI, I worked as a Research Scientist at <a href="https://openai.com/">OpenAI</a>. I\'m a core contributor to GPT-4o, and the inventor of GPT4-Turbo long-context algorithm, and a primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding.',
-        zh: '我在 <a href="https://x.ai/">xAI</a> 带领预训练团队，主导了 Grok-4.2/4.1/4-fast、Grok 2/3/4-mini 以及 X 和 Tesla 上 Grok-Voice 的预训练，也深度参与了 Grok 2/3/4 的预训练工作。<br>加入 xAI 之前，我在 <a href="https://openai.com/">OpenAI</a> 担任研究科学家，期间深度参与了 GPT-4o 的研发，提出了 GPT4-Turbo 长上下文算法，并在 DALL-E 3 和 OpenAI Embedding 项目中发挥了关键作用。'
+        en: 'I lead the pretraining team at <a href="https://x.ai/">xAI</a>, working on large-scale training infrastructure and core recipes. I am the pretrain lead for Grok-chat/code, and the pretrain lead for Grok-Voice on X and Tesla. I\'m also the RL lead for Grok-code.<br>Before joining xAI, I worked as a Research Scientist at <a href="https://openai.com/">OpenAI</a>. I\'m a core contributor to GPT-4o, the inventor of GPT4-Turbo 128k long-context algorithm, a primary contributor to DALL-E 3, and the first contributor to OpenAI Embedding.',
+        zh: '我在 <a href="https://x.ai/">xAI</a> 带领预训练团队，负责大规模训练基础设施和核心 recipe 相关工作。我负责 Grok-chat/code 的预训练，以及 X 和 Tesla 上 Grok-Voice 的预训练，同时也是 Grok-code 的 RL 负责人。<br>加入 xAI 之前，我在 <a href="https://openai.com/">OpenAI</a> 担任研究科学家，参与过 GPT-4o，提出了 GPT4-Turbo 的长上下文算法，并主要参与了 DALL-E 3 和 OpenAI Embedding。'
     },
-    projects: { en: 'Projects', zh: '项目经历' },
+    projects: { en: 'Model Releases', zh: '模型发布' },
     packages: { en: 'Sample Packages', zh: '代表性开源项目' },
     publications: { en: 'Publications', zh: '论文发表' },
     proj_prod: {
-        en: 'Production models pretraining, including Grok-Voice on X and Tesla, moderator and decider on X, and enterprise API models of xAI.',
-        zh: '线上模型预训练，包括 X 和 Tesla 平台上的 Grok-Voice、X 平台的内容审核与决策模型，以及 xAI 企业级 API 模型。'
+        en: 'Grok-Voice (X and Tesla): Pretraining lead. Core recipe.',
+        zh: 'Grok-Voice（X 和 Tesla）：预训练负责人；核心 recipe。'
+    },
+    proj_grok43code: {
+        en: 'Grok4.3-code: Pretraining and RL lead. Core recipe.',
+        zh: 'Grok4.3-code：预训练与 RL 负责人；核心 recipe。'
+    },
+    proj_grok43chat: {
+        en: 'Grok4.3-chat: Pretraining lead. Core recipe.',
+        zh: 'Grok4.3-chat：预训练负责人；核心 recipe。'
     },
     proj_grok42: {
-        en: 'Grok-4.2: Pretraining lead.',
-        zh: 'Grok-4.2：预训练负责人。'
+        en: 'Grok4.2: Pretraining lead. Core recipe.',
+        zh: 'Grok4.2：预训练负责人；核心 recipe。'
     },
     proj_grok41: {
-        en: 'Grok4.1:<a href=https://x.com/archanfel_anoth/status/1954928776095384059> Multimodal pretraining lead.</a>',
-        zh: 'Grok4.1：<a href=https://x.com/archanfel_anoth/status/1954928776095384059>多模态预训练负责人。</a>'
+        en: 'Grok4.1:<a href=https://x.com/archanfel_anoth/status/1954928776095384059> Multimodal pretraining lead. Core recipe.</a>',
+        zh: 'Grok4.1：<a href=https://x.com/archanfel_anoth/status/1954928776095384059>多模态预训练负责人；核心 recipe。</a>'
     },
     proj_grok4fast: {
-        en: 'Grok4-fast: <a href="https://x.ai/news/grok-4-fast/">Pretraining lead.</a>',
-        zh: 'Grok4-fast：<a href="https://x.ai/news/grok-4-fast/">预训练负责人。</a>'
+        en: 'Grok4-fast: <a href="https://x.ai/news/grok-4-fast/">Pretraining lead. Core recipe.</a>',
+        zh: 'Grok4-fast：<a href="https://x.ai/news/grok-4-fast/">预训练负责人；核心 recipe。</a>'
     },
     proj_grok4: {
         en: 'Grok4: Core pretraining recipe.',
         zh: 'Grok4：核心预训练贡献者。'
     },
     proj_grok4mini: {
-        en: 'Grok4-mini: Pretraining lead.',
-        zh: 'Grok4-mini：预训练负责人。'
+        en: 'Grok4-mini: Pretraining lead. Core recipe.',
+        zh: 'Grok4-mini：预训练负责人；核心 recipe。'
     },
     proj_grok3mini: {
-        en: 'Grok3-mini-chat & Grok3-mini-reasoning: <a href="https://x.ai/news/grok-3">Pretraining lead. Posttraining and reasoning core recipe.</a>',
-        zh: 'Grok3-mini-chat & Grok3-mini-reasoning：<a href="https://x.ai/news/grok-3">预训练负责人，后训练及推理的核心贡献者。</a>'
+        en: 'Grok3-mini-chat & Grok3-mini-reasoning: <a href="https://x.ai/news/grok-3">Pretraining lead. Posttraining and RL core recipe.</a>',
+        zh: 'Grok3-mini-chat & Grok3-mini-reasoning：<a href="https://x.ai/news/grok-3">预训练负责人，后训练及 RL 核心 recipe。</a>'
     },
     proj_grok3: {
         en: 'Grok3: <a href="https://x.ai/news/grok-3"> Core pretraining recipe.</a>',
         zh: 'Grok3：<a href="https://x.ai/news/grok-3">核心预训练贡献者。</a>'
     },
     proj_grok2mini: {
-        en: 'Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining lead</a>',
-        zh: 'Grok2-mini：<a href="https://x.ai/blog/grok-2">预训练负责人</a>'
+        en: 'Grok2-mini: <a href="https://x.ai/blog/grok-2">Pretraining lead. Core recipe.</a>',
+        zh: 'Grok2-mini：<a href="https://x.ai/blog/grok-2">预训练负责人；核心 recipe。</a>'
     },
     proj_grok2: {
         en: 'Grok2: <a href="https://x.ai/blog/grok-2"> Core pretraining recipe.</a>',
